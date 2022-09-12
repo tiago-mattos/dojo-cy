@@ -27,21 +27,7 @@ describe('Funcionalidade: Criação de Perfil', () => {
         cy.get('[data-test="dashboard-createProfile"]').should('be.visible')
         cy.get('[data-test="dashboard-welcome"]').should('contain', 'Bem-vindo ' + nome)
 
-        cy.get('[data-test="dashboard-createProfile"]').click()
-        cy.get('.large').should('contain', 'Crie Seu Perfil')
-
-        cy.get('#mui-component-select-status').click()
-        cy.get('[data-test="status-1"]').click()
-
-        cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type('AmbevTech')
-
-
-        cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type(cidade + ', ' + estado)
-        cy.get('[data-test="profile-skills"] > .MuiInputBase-root > .MuiInputBase-input').type('Testes de Integração, Automação de Testes, Cypress, Testes Manuais')
-
-
-        cy.get('[data-test="profile-submit"]').click()
-
+        cy.criarPerfil()
 
         cy.get('[data-test="alert"]').should('contain', 'Perfil Criado')
        
