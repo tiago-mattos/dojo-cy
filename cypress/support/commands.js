@@ -46,13 +46,13 @@ Cypress.Commands.add('cadastro', (nome, email, senha, senha_confirma) => {
 
 })
 
-Cypress.Commands.add('criarPerfilSemRedesSociais', (empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia) => {
+Cypress.Commands.add('criarPerfilSemRedesSociais', (status, empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia) => {
     cy.get('[data-test="dashboard-createProfile"]').click()
     cy.get('.large').should('contain', 'Crie Seu Perfil')
 
     cy.get('#mui-component-select-status').click()
-     cy.get('[data-test="status-1"]').click()  
-
+    cy.contains('Especialista em QA').click()
+    
     cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type(empresa)
     cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type(cidade + ', ' + estado)
     cy.get('[data-test="profile-skills"] > .MuiInputBase-root > .MuiInputBase-input').type(conhecimentos)
@@ -65,12 +65,12 @@ Cypress.Commands.add('criarPerfilSemRedesSociais', (empresa, cidade, estado, con
 })
 
 
-Cypress.Commands.add('criarPerfilRedesSociais', (empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia, twitter, facebook, youtube, linkedin, instagram, medium) => {
+Cypress.Commands.add('criarPerfilRedesSociais', (status, empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia, twitter, facebook, youtube, linkedin, instagram, medium) => {
     cy.get('[data-test="dashboard-createProfile"]').click()
     cy.get('.large').should('contain', 'Crie Seu Perfil')
 
     cy.get('#mui-component-select-status').click()
-    cy.get('[data-test="status-1"]').click()
+    cy.contains('Especialista em QA').click()
 
     cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type(empresa)
     cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type(cidade + ', ' + estado)
@@ -92,12 +92,13 @@ Cypress.Commands.add('criarPerfilRedesSociais', (empresa, cidade, estado, conhec
 })
 
 
-Cypress.Commands.add('criarPerfilConhecumentosNaoInfo', (empresa, cidade, estado, usuarioGitHub, biografia) => {
+Cypress.Commands.add('criarPerfilConhecumentosNaoInfo', (status, empresa, cidade, estado, usuarioGitHub, biografia) => {
     cy.get('[data-test="dashboard-createProfile"]').click()
     cy.get('.large').should('contain', 'Crie Seu Perfil')
 
     cy.get('#mui-component-select-status').click()
-    cy.get('[data-test="status-2"]').click()
+    cy.contains('Especialista em QA').click()
+  
 
     cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type(empresa)
     cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type(cidade + ', ' + estado) 

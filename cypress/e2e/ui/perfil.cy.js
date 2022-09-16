@@ -28,7 +28,7 @@ describe('Funcionalidade: Criação de Perfil', () => {
 
         cy.get('[data-test="dashboard-welcome"]').should('contain', 'Bem-vindo ' + nome)
         cy.get('[data-test="dashboard-createProfile"]').should('be.visible').then(() => {
-            cy.criarPerfilSemRedesSociais(perfil.empresa, perfil.cidade, perfil.estado, perfil.conhecimentos, perfil.usuarioGitHub, perfil.biografia)
+            cy.criarPerfilSemRedesSociais(perfil.status, perfil.empresa, perfil.cidade, perfil.estado, perfil.conhecimentos, perfil.usuarioGitHub, perfil.biografia)
 
             cy.get('[data-test="alert"]').should('contain', 'Perfil Criado')
         });
@@ -48,7 +48,7 @@ describe('Funcionalidade: Criação de Perfil', () => {
 
         cy.get('[data-test="dashboard-welcome"]').should('contain', 'Bem-vindo ' + nome)
         cy.get('[data-test="dashboard-createProfile"]').should('be.visible').then(() => {
-            cy.criarPerfilRedesSociais(perfil.empresa, perfil.cidade, perfil.estado, perfil.conhecimentos, perfil.usuarioGitHub, perfil.biografia, perfil.urlTwitter, 
+            cy.criarPerfilRedesSociais(perfil.status, perfil.empresa, perfil.cidade, perfil.estado, perfil.conhecimentos, perfil.usuarioGitHub, perfil.biografia, perfil.urlTwitter, 
                 perfil.urlFacebook, perfil.urlYoutube, perfil.urlLinkedin, perfil.urlInstagram, perfil.urlMedium)
 
             cy.get('[data-test="alert"]').should('contain', 'Perfil Criado')
@@ -69,7 +69,7 @@ describe('Funcionalidade: Criação de Perfil', () => {
 
         cy.get('[data-test="dashboard-welcome"]').should('contain', 'Bem-vindo ' + nome)
         cy.get('[data-test="dashboard-createProfile"]').should('be.visible').then(() => {
-            cy.criarPerfilSemRedesSociais(perfil.empresa, perfil.cidade, perfil.estado, perfil.conhecimentos, perfil.usuarioGitHub, perfil.biografia)
+            cy.criarPerfilSemRedesSociais(perfil.status, perfil.empresa, perfil.cidade, perfil.estado, perfil.conhecimentos, perfil.usuarioGitHub, perfil.biografia)
 
             cy.get('[data-test="alert"]').should('contain', 'Perfil Criado')
         });
@@ -93,7 +93,7 @@ describe('Funcionalidade: Criação de Perfil', () => {
 
         cy.get('[data-test="dashboard-welcome"]').should('contain', 'Bem-vindo ' + nome)
         cy.get('[data-test="dashboard-createProfile"]').should('be.visible').then(() => {
-            cy.criarPerfilConhecumentosNaoInfo(perfil.empresa, perfil.cidade, perfil.estado, perfil.usuarioGitHub, perfil.biografia)
+            cy.criarPerfilConhecumentosNaoInfo(perfil.status, perfil.empresa, perfil.cidade, perfil.estado, perfil.usuarioGitHub, perfil.biografia)
            
         });
 
