@@ -46,21 +46,48 @@ Cypress.Commands.add('cadastro', (nome, email, senha, senha_confirma) => {
 
 })
 
-Cypress.Commands.add('criarPerfil', () => {
+Cypress.Commands.add('criarPerfilSemRedesSociais', (empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia) => {
+    cy.get('[data-test="dashboard-createProfile"]').click()
+    cy.get('.large').should('contain', 'Crie Seu Perfil')
+
+    cy.get('#mui-component-select-status').click()
+     cy.get('[data-test="status-1"]').click()  
+
+    cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type(empresa)
+    cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type(cidade + ', ' + estado)
+    cy.get('[data-test="profile-skills"] > .MuiInputBase-root > .MuiInputBase-input').type(conhecimentos)
+    cy.get('[data-test="profile-gitHub"] > .MuiInputBase-root > .MuiInputBase-input').type(usuarioGitHub)
+    cy.get('[rows="1"]').type(biografia)
+
+    cy.get('[data-test="profile-submit"]').click()
+
+
+})
+
+
+Cypress.Commands.add('criarPerfilRedesSociais', (empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia, twitter, facebook, youtube, linkedin, instagram, medium) => {
     cy.get('[data-test="dashboard-createProfile"]').click()
     cy.get('.large').should('contain', 'Crie Seu Perfil')
 
     cy.get('#mui-component-select-status').click()
     cy.get('[data-test="status-1"]').click()
 
-    cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type('AmbevTech')
-
-
-    cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type("Belo Horizonte" + ', ' + "MG")
-    cy.get('[data-test="profile-skills"] > .MuiInputBase-root > .MuiInputBase-input').type('Testes de Integração, Automação de Testes, Cypress, Testes Manuais')
+    cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type(empresa)
+    cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type(cidade + ', ' + estado)
+    cy.get('[data-test="profile-skills"] > .MuiInputBase-root > .MuiInputBase-input').type(conhecimentos)
+    cy.get('[data-test="profile-gitHub"] > .MuiInputBase-root > .MuiInputBase-input').type(usuarioGitHub)
+    cy.get('[rows="1"]').type(biografia)
+    cy.get('[data-test="profile-socials"]').click()
+    cy.get('[data-test="profile-twitter"] > .MuiInputBase-root > .MuiInputBase-input').type(twitter)
+    cy.get('[data-test="profile-facebook"] > .MuiInputBase-root > .MuiInputBase-input').type(facebook)
+    cy.get('[data-test="profile-youtube"] > .MuiInputBase-root > .MuiInputBase-input').type(youtube)
+    cy.get('[data-test="profile-linkedin"] > .MuiInputBase-root > .MuiInputBase-input').type(linkedin)
+    cy.get('[data-test="profile-instagram"]').type(instagram)
+    cy.get('[data-test="profile-medium"] > .MuiInputBase-root > .MuiInputBase-input').type(medium)
 
 
     cy.get('[data-test="profile-submit"]').click()
 
 
 })
+
