@@ -83,4 +83,29 @@ describe('Funcionalidade: Criação de Perfil', () => {
 
     });
 
+    it('Campo Obrigaório Não Preenchido', () => {
+        var nome = faker.name.findName()
+        var email = faker.internet.email(nome).replace('..', '.')
+        var senha = '123321'
+        var confirmaSenha = '123321'
+
+        cy.cadastro(nome, email, senha, confirmaSenha)
+
+        cy.get('[data-test="dashboard-welcome"]').should('contain', 'Bem-vindo ' + nome)
+        cy.get('[data-test="dashboard-createProfile"]').should('be.visible').then(() => {
+            cy.criarPerfilConhecumentosNaoInfo(perfil.empresa, perfil.cidade, perfil.estado, perfil.usuarioGitHub, perfil.biografia)
+           
+        });
+
+        cy.get('.MuiFormHelperText-root').should('contain', 'Conhecimentos é obrigatório')
+    
+
+
+
+      
+
+
+
+    });
+
 });

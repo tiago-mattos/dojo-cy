@@ -91,3 +91,24 @@ Cypress.Commands.add('criarPerfilRedesSociais', (empresa, cidade, estado, conhec
 
 })
 
+
+Cypress.Commands.add('criarPerfilConhecumentosNaoInfo', (empresa, cidade, estado, usuarioGitHub, biografia) => {
+    cy.get('[data-test="dashboard-createProfile"]').click()
+    cy.get('.large').should('contain', 'Crie Seu Perfil')
+
+    cy.get('#mui-component-select-status').click()
+    cy.get('[data-test="status-2"]').click()
+
+    cy.get('[data-test="profile-company"] > .MuiInputBase-root > .MuiInputBase-input').type(empresa)
+    cy.get('[data-test="profile-location"] > .MuiInputBase-root > .MuiInputBase-input').type(cidade + ', ' + estado) 
+    cy.get('[data-test="profile-gitHub"] > .MuiInputBase-root > .MuiInputBase-input').type(usuarioGitHub)
+    cy.get('[rows="1"]').type(biografia)
+ 
+
+
+    cy.get('[data-test="profile-submit"]').click()
+
+
+})
+
+
