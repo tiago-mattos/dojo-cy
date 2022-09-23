@@ -18,7 +18,14 @@ Cypress.Commands.add('cadastro', (nome, email, senha, senha_confirma) => {
 
 })
 
-Cypress.Commands.add('criarPerfilSemRedesSociais', (status, empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia) => {
+Cypress.Commands.add('criarPerfilSemRedesSociais', (
+    status, 
+    empresa, 
+    cidade, 
+    estado, 
+    conhecimentos, 
+    usuarioGitHub, 
+    biografia) => {
     cy.get('[data-test="dashboard-createProfile"]').click()
     cy.get('.large').should('contain', 'Crie Seu Perfil')
 
@@ -37,7 +44,20 @@ Cypress.Commands.add('criarPerfilSemRedesSociais', (status, empresa, cidade, est
 })
 
 
-Cypress.Commands.add('criarPerfilRedesSociais', (status, empresa, cidade, estado, conhecimentos, usuarioGitHub, biografia, twitter, facebook, youtube, linkedin, instagram, medium) => {
+Cypress.Commands.add('criarPerfilRedesSociais', (
+    status, 
+    empresa, 
+    cidade, 
+    estado, 
+    conhecimentos, 
+    usuarioGitHub, 
+    biografia, 
+    twitter, 
+    facebook, 
+    youtube, 
+    linkedin, 
+    instagram, 
+    medium) => {
     cy.get('[data-test="dashboard-createProfile"]').click()
     cy.get('.large').should('contain', 'Crie Seu Perfil')
 
@@ -64,7 +84,14 @@ Cypress.Commands.add('criarPerfilRedesSociais', (status, empresa, cidade, estado
 })
 
 
-Cypress.Commands.add('criarPerfilConhecumentosNaoInfo', (status, empresa, cidade, estado, usuarioGitHub, biografia) => {
+Cypress.Commands.add('criarPerfilConhecumentosNaoInfo', (
+    status, 
+    empresa, 
+    cidade, 
+    estado, 
+    usuarioGitHub, 
+    biografia
+    ) => {
     cy.get('[data-test="dashboard-createProfile"]').click()
     cy.get('.large').should('contain', 'Crie Seu Perfil')
 
@@ -107,4 +134,50 @@ Cypress.Commands.add('GetToken', () => {
 
 
 })
+
+
+Cypress.Commands.add('criarPost', (token, text) => {
+
+  
+    cy.request({
+        method: 'POST',
+        url: "/api/posts",
+        headers: { Cookie: token },
+        body: {
+            "text": text
+        }
+    }).should((response) => {
+      
+      
+
+    })
+
+
+
+
+})
+
+
+Cypress.Commands.add('curtirPost', (token, postID) => {
+  
+    cy.request({
+        method: 'PUT',
+        url: `/api/posts/like/${postID}`,
+        headers: { Cookie: token },       
+    }).should((response) => {  
+    })
+
+})
+
+Cypress.Commands.add('deletarPost', (token, postID) => {
+  
+    cy.request({
+        method: 'DELETE',
+        url: `/api/posts/${postID}`,
+        headers: { Cookie: token },       
+    }).should((response) => {  
+    })
+
+})
+
 
