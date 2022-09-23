@@ -18,7 +18,7 @@ describe('Funcionalidade: Publicação via API', () => {
 
         cy.criarPost(token, text).then((response) => {
             expect(response.status).to.equal(201)
-            cy.log(response.body._id)
+            // cy.log(response.body._id)
 
         })
 
@@ -45,7 +45,7 @@ describe('Funcionalidade: Publicação via API', () => {
         cy.criarPost(token, text).then((response) => {
             let id = response.body._id
             cy.curtirPost(token, id).then((response)=> {expect(response.status).to.equal(200) })
-            cy.log(id)
+            // cy.log(id)
 
         })
 
@@ -62,7 +62,7 @@ describe('Funcionalidade: Publicação via API', () => {
                 expect(response.status).to.equal(200)
                 expect(response.body.msg).to.equal("Post removido")
              })
-            cy.log(id)
+            // cy.log(id)
 
         })
 
